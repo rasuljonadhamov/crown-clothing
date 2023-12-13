@@ -1,9 +1,12 @@
-import { signInWithGooglePopup } from "../../utils/Firebase/Firebase";
+import {
+  signInWithGooglePopup,
+  creteUserDocumentFromAuth,
+} from "../../utils/Firebase/Firebase";
 
 function SiginIn() {
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    console.log(response);
+    const { user } = await signInWithGooglePopup();
+    const userDocRef = await creteUserDocumentFromAuth(user);
   };
 
   return (
