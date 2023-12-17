@@ -1,8 +1,12 @@
 import { useState } from "react";
+import "./SignUpForm.style.scss";
+
 import {
   createAuthUserWithEmailAndPassword,
   creteUserDocumentFromAuth,
 } from "../utils/Firebase/Firebase";
+import FormInput from "../components/form-input/FormInput";
+import Button from "../components/buttons/Button";
 
 const defoultFormFields = {
   displayName: "",
@@ -53,11 +57,12 @@ function SignUpForm() {
   };
 
   return (
-    <div>
-      <h1>Sigin Up with your email and password</h1>
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sigin Up with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input
+        <FormInput
+          label="Display Name"
           required
           type="text"
           onChange={handleChange}
@@ -65,8 +70,8 @@ function SignUpForm() {
           value={displayName}
         />
 
-        <label>Email</label>
-        <input
+        <FormInput
+          label="Email"
           required
           type="email"
           onChange={handleChange}
@@ -74,8 +79,8 @@ function SignUpForm() {
           value={email}
         />
 
-        <label>Password</label>
-        <input
+        <FormInput
+          label="Password"
           required
           type="password"
           onChange={handleChange}
@@ -83,8 +88,8 @@ function SignUpForm() {
           value={password}
         />
 
-        <label>Consfirm Password</label>
-        <input
+        <FormInput
+          label="Consfirm Password"
           required
           type="password"
           onChange={handleChange}
@@ -92,7 +97,7 @@ function SignUpForm() {
           value={confirmPassword}
         />
 
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
