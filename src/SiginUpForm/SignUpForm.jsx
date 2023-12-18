@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./SignUpForm.style.scss";
 
 import {
@@ -6,6 +6,7 @@ import {
   creteUserDocumentFromAuth,
 } from "../utils/Firebase/Firebase";
 import FormInput from "../components/form-input/FormInput";
+import { UserContext } from "../contexts/user.contexts";
 import Button from "../components/buttons/Button";
 
 const defoultFormFields = {
@@ -20,6 +21,7 @@ const defoultFormFields = {
 function SignUpForm() {
   const [formFields, setFormField] = useState(defoultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     console.log(formFields);
@@ -44,6 +46,7 @@ function SignUpForm() {
         email,
         password
       );
+      setCurrentUser(user);
 
       await creteUserDocumentFromAuth(user, { displayName });
       resetForm();

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../contexts/user.contexts";
 import "./SignInForm.style.scss";
 
 import {
@@ -24,6 +25,8 @@ function SignInForm() {
     setFormField({ ...formFields, [name]: value });
   };
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const resetForm = () => {
     setFormField(defoultFormFields);
   };
@@ -37,11 +40,12 @@ function SignInForm() {
     e.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      console.log(user);
+      setCurrentUser(user);
       resetForm();
     } catch (error) {
       switch (error.code) {
