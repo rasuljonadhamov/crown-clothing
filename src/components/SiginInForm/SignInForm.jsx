@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { UserContext } from "../../contexts/user.contexts";
+import { useState } from "react";
 import "./SignInForm.style.scss";
 
 import {
@@ -25,15 +24,12 @@ function SignInForm() {
     setFormField({ ...formFields, [name]: value });
   };
 
-  const { setCurrentUser } = useContext(UserContext);
-
   const resetForm = () => {
     setFormField(defoultFormFields);
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await creteUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (e) => {
@@ -44,8 +40,6 @@ function SignInForm() {
         email,
         password
       );
-      console.log(user);
-      setCurrentUser(user);
       resetForm();
     } catch (error) {
       switch (error.code) {
