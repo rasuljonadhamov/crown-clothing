@@ -4,6 +4,8 @@ import { UserContext } from "../../contexts/user.contexts";
 import { signOutUser } from "../../utils/Firebase/Firebase";
 import logo from "../../assets/crown.svg";
 import "./Navigation.scss";
+import CardIcon from "../../components/CardIcon/CardIcon";
+import CardDropDown from "../../components/CardDropDown/CardDropDown";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -27,7 +29,10 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <CardIcon />
         </div>
+
+        <CardDropDown />
       </div>
       <Outlet />
     </Fragment>

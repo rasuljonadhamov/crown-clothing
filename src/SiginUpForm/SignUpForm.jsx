@@ -15,14 +15,12 @@ const defoultFormFields = {
   confirmPassword: "",
 };
 
-// function createAuthUserWithEmailAndPassword
 
 function SignUpForm() {
   const [formFields, setFormField] = useState(defoultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
   const handleChange = (e) => {
-    console.log(formFields);
     const { name, value } = e.target;
     setFormField({ ...formFields, [name]: value });
   };
