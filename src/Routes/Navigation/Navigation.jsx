@@ -6,9 +6,15 @@ import logo from "../../assets/crown.svg";
 import "./Navigation.scss";
 import CardIcon from "../../components/CardIcon/CardIcon";
 import CardDropDown from "../../components/CardDropDown/CardDropDown";
+import { CardContext } from "../../contexts/card.context";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCardOpen, setIsCardOpen } = useContext(CardContext);
+
+  function handleShop() {
+    setIsCardOpen(!isCardOpen);
+  }
 
   return (
     <Fragment>
@@ -29,10 +35,10 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <CardIcon />
+          <CardIcon onClick={handleShop} />
         </div>
 
-        <CardDropDown />
+        {isCardOpen && <CardDropDown />}
       </div>
       <Outlet />
     </Fragment>

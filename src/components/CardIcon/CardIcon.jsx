@@ -1,11 +1,11 @@
 import ShoppingIcon from "../../assets/shopping-bag.svg";
 import "./CardIcon.scss";
 
-const CardIcon = () => {
+const CardIcon = ({ onClick }) => {
   return (
     <div className="card-icon-container">
-      <div className="shopping-icon">
-        <img src={ShoppingIcon} alt="aa" className="img"/>
+      <div className="shopping-icon" onClick={onClick}>
+        <img src={ShoppingIcon} alt="aa" className="img" />
         <span className="item-count">0</span>
       </div>
     </div>
