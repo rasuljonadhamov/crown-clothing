@@ -6,14 +6,14 @@ import logo from "../../assets/crown.svg";
 import "./Navigation.scss";
 import CardIcon from "../../components/CardIcon/CardIcon";
 import CardDropDown from "../../components/CardDropDown/CardDropDown";
-import { CardContext } from "../../contexts/card.context";
+import { CartContext } from "../../contexts/card.context";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { isCardOpen, setIsCardOpen } = useContext(CardContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   function handleShop() {
-    setIsCardOpen(!isCardOpen);
+    setIsCartOpen(!isCartOpen);
   }
 
   return (
@@ -38,7 +38,7 @@ const Navigation = () => {
           <CardIcon onClick={handleShop} />
         </div>
 
-        {isCardOpen && <CardDropDown />}
+        {isCartOpen && <CardDropDown />}
       </div>
       <Outlet />
     </Fragment>

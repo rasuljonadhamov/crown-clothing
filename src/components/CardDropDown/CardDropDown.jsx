@@ -1,18 +1,17 @@
 import { useContext } from "react";
-import CardItem from "../CardItem/CardItem";
-import Button from "../buttons/Button";
 import "./CardDropDown.scss";
-import { CardContext } from "../../contexts/card.context";
+import { CartContext } from "../../contexts/card.context";
+import CartItem from "../CardItem/CardItem";
+import Button from "../buttons/Button";
 
 const CardDropDown = () => {
-  const { cardItems } = useContext(CardContext);
+  const { cartItems } = useContext(CartContext);
   return (
     <div className="card-dropdown-container">
       <div className="card-items">
-        {cardItems &&
-          cardItems.map((cardItem) => (
-            <CardItem key={cardItem.id} cardItem={cardItem} />
-          ))}
+        {cartItems.map((item) => (
+          <CartItem key={item.id} cartItem={item} />
+        ))}
       </div>
       <Button>Go To CheckOut</Button>
     </div>
